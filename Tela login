@@ -1,0 +1,114 @@
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+
+export default function LoginScreen({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    // Aqui entra a sua lógica de autenticação (API, Firebase, etc.)
+    console.log('Login efetuado com:', email, password);
+  };
+
+  return (
+    <KeyboardAvoidingView 
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
+      style={styles.container}
+    >
+      <View style={styles.header}>
+        <Text style={styles.title}>Login</Text>
+        <Text style={styles.subtitle}>Acesse sua conta novamente!</Text>
+      </View>
+
+      <View style={styles.form}>
+        <TextInput
+          style={styles.input}
+          placeholder="E-mail"
+          placeholderTextColor="#a0a0a0"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          value={email}
+          onChangeText={setEmail}
+        />
+
+        <TextInput
+          style={styles.input}
+          placeholder="Senha"
+          placeholderTextColor="#a0a0a0"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
+
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Entrar</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={styles.linkButton} 
+          onPress={() => navigation.navigate('Cadastro')}
+        >
+          <Text style={styles.linkText}>Não tem uma conta? Cadastre-se</Text>
+        </TouchableOpacity>
+      </View>
+    </KeyboardAvoidingView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f6fa',
+    paddingHorizontal: 30,
+    justifyContent: 'center',
+  },
+  header: {
+    marginBottom: 40,
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#2f3640',
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#718093',
+    //paddingHorizontal: 20,
+    marginTop: 5,
+  },
+  form: {
+    gap: 15,
+  },
+  input: {
+    backgroundColor: '#fff',
+    height: 55,
+    borderRadius: 11,
+    paddingHorizontal: 20,
+    fontSize: 16,
+    color: '#2f3640',
+    borderWidth: 1,
+    borderColor: '#dcdde1',
+  },
+  button: {
+    backgroundColor: 'tomato',
+    height: 55,
+    borderRadius: 11,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  linkButton: {
+    alignItems: 'center',
+    marginTop: 15,
+  },
+  linkText: {
+    color: '#718093',
+    fontSize: 14,
+  },
+});
+// Tela login
