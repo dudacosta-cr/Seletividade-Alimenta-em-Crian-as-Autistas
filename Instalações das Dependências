@@ -1,0 +1,11 @@
+# Instala a base do React Navigation
+npm install @react-navigation/native
+
+# Instala as dependências necessárias para gerenciar telas nativas
+npm install react-native-screens react-native-safe-area-context
+
+# Instala o Stack Navigator (responsável pelo efeito de empilhamento)
+npm install @react-navigation/stack
+
+# Comando para garantir a versão correta do expo
+npx expo install react-native-screens react-native-safe-area-context
